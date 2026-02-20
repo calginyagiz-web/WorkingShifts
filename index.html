@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vardiya Hesaplama</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="card">
+            <h1>Vardiya Hesaplama</h1>
+            <p class="subtitle">Tarihi gir, vardiyanı öğren</p>
+
+            <div class="input-group">
+                <label>Gün</label>
+                <input type="number" id="gun" placeholder="21">
+            </div>
+
+            <div class="input-group">
+                <label>Ay</label>
+                <input type="number" id="ay" placeholder="2">
+            </div>
+
+            <div class="input-group">
+                <label>Yıl</label>
+                <input type="number" id="yil" placeholder="2026">
+            </div>
+
+            <button onclick="hesapla()">Hesapla</button>
+
+            <div id="sonuc" class="sonuc"></div>
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
