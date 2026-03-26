@@ -2,99 +2,138 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Segoe UI', sans-serif;
+    font-family: 'Inter', sans-serif;
 }
 
 body {
-    height: 100vh;
-    background: linear-gradient(135deg, #667eea, #764ba2);
+    background-color: #f1f5f9;
     display: flex;
-    align-items: center;
     justify-content: center;
-}
-
-.container {
-    width: 100%;
-    max-width: 400px;
+    align-items: center;
+    min-height: 100vh;
     padding: 20px;
+    color: #334155;
 }
 
 .card {
-    background: white;
-    padding: 30px;
-    border-radius: 20px;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    background: #ffffff;
+    width: 100%;
+    max-width: 420px;
+    padding: 32px;
+    border-radius: 16px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+}
+
+.card-header {
     text-align: center;
-    animation: fadeIn 0.6s ease;
+    margin-bottom: 24px;
 }
 
-h1 {
-    margin-bottom: 5px;
-    color: #333;
+.card-header h2 {
+    color: #0f172a;
+    font-size: 24px;
+    margin-bottom: 8px;
 }
 
-.subtitle {
-    color: #777;
-    margin-bottom: 25px;
+.card-header p {
+    font-size: 14px;
+    color: #64748b;
 }
 
 .input-group {
-    text-align: left;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
 }
 
-label {
+.input-group label {
     font-size: 14px;
-    color: #555;
+    font-weight: 600;
+    margin-bottom: 6px;
+    color: #1e293b;
 }
 
-input {
-    width: 100%;
-    padding: 10px;
-    border-radius: 10px;
-    border: 1px solid #ddd;
-    margin-top: 5px;
-    transition: 0.2s;
-}
-
-input:focus {
-    border-color: #667eea;
+/* Select ve Date Input için ortak modern tasarım */
+.input-group input[type="date"],
+.input-group select {
+    padding: 12px 16px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    font-size: 16px;
     outline: none;
-    box-shadow: 0 0 0 2px rgba(102, 126, 234, 0.2);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    color: #334155;
+    background-color: #fff;
+    cursor: pointer;
+}
+
+/* Select için özel ayarlar (örneğin ok işaretinin daha güzel durması için) */
+.input-group select {
+    appearance: none;
+    /* Varsayılan ok işaretini kaldırır */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23334155' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+    background-size: 16px;
+    padding-right: 40px;
+    /* Ok işareti için boşluk */
+}
+
+.input-group input[type="date"]:focus,
+.input-group select:focus {
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
 }
 
 button {
     width: 100%;
-    padding: 12px;
-    border: none;
-    border-radius: 12px;
-    background: linear-gradient(135deg, #667eea, #764ba2);
+    background-color: #3b82f6;
     color: white;
+    border: none;
+    padding: 14px;
+    border-radius: 8px;
     font-size: 16px;
+    font-weight: 600;
     cursor: pointer;
-    transition: 0.3s;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+    margin-top: 8px;
 }
 
 button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    background-color: #2563eb;
 }
 
-.sonuc {
-    margin-top: 20px;
+button:active {
+    transform: scale(0.98);
+}
+
+.result-box {
+    margin-top: 24px;
+    background-color: #f8fafc;
+    border: 1px solid #e2e8f0;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+
+.result-box.hidden {
+    display: none;
+    opacity: 0;
+}
+
+.result-label {
+    display: block;
+    font-size: 14px;
+    color: #64748b;
+    margin-bottom: 8px;
+}
+
+.result-text {
     font-size: 22px;
-    font-weight: bold;
-    color: #667eea;
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(15px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+    font-weight: 700;
+    color: #0f172a;
 }

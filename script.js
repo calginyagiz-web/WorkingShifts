@@ -1,34 +1,49 @@
+// 15 günlük vardiya örüntüsünü tanımlıyoruz
+const shiftPattern = [
+    "1. Gündüz", "2. Gündüz", "3. Gündüz", "4. Gündüz", "5. Gündüz",
+    "1. Gece", "1. Dinlenme",
+    "2. Gece", "2. Dinlenme",
+    "3. Gece", "3. Dinlenme",
+    "4. Gece", "4. Dinlenme",
+    "5. Gece", "5. Dinlenme"
+];
+
+// Not: JavaScript'te aylar 0'dan başlar (0 = Ocak, 11 = Aralık)
+const referenceDate = new Date(2026, 2, 26);
+
+const references = {
+    "1": 10,
+    "2": 5,
+    "3": 0
+};
+
 function hesapla() {
+    const targetDateInput = document.getElementById('targetDate').value;
+    const resultBox = document.getElementById('resultBox');
+    const groupSelectInput = document.getElementById('groupSelect').value;
+    const resultText = document.getElementById('resultText');
 
-    const gun = parseInt(document.getElementById("gun").value);
-    const ay = parseInt(document.getElementById("ay").value);
-    const yil = parseInt(document.getElementById("yil").value);
-
-    if (!gun || !ay || !yil) {
-        document.getElementById("sonuc").innerText = "Lütfen tüm alanları doldurun";
+    // Tarih seçilmemişse uyarı ver
+    if (!targetDateInput) {
+        alert("Lütfen sorgulanacak tarihi seçin.");
         return;
     }
 
-    const girilenTarih = new Date(yil, ay - 1, gun);
+    // Hedef tarihi oluşturuyoruz
+    const targetDate = new Date(targetDateInput);
 
-    // Başlangıç tarihi → 21 Şubat 2026 = 2.gece
-    const baslangic = new Date(2026, 1, 21);
+    // Saat farklılıklarından doğacak hataları önlemek için saatleri sıfırlıyoruz
+    referenceDate.setHours(0, 0, 0, 0);
+    targetDate.setHours(0, 0, 0, 0);
 
-    const vardiya = [
-        "1.gündüz", "2.gündüz", "3.gündüz", "4.gündüz", "5.gündüz",
-        "1.gece", "1.dinlenme",
-        "2.gece", "2.dinlenme",
-        "3.gece", "3.dinlenme",
-        "4.gece", "4.dinlenme",
-        "5.gece", "5.dinlenme"
-    ];
+    // İki tarih arasındaki milisaniye farkını gün sayısına çeviriyoruz
+    const diffTime = targetDate - referenceDate;
+    const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
 
-    const baslangicIndex = 7; // 2.gece
+    // Yeni indeksi buluyoruz
+    const calculatedIndex = (((references[groupSelectInput] + diffDays) % 15) + 15) % 15;
 
-    const farkMs = girilenTarih - baslangic;
-    const gunFarki = Math.floor(farkMs / (1000 * 60 * 60 * 24));
-
-    let index = (baslangicIndex + (gunFarki % 15) + 15) % 15;
-
-    document.getElementById("sonuc").innerText = vardiya[index];
+    // Sonucu ekrana yazdırıyoruz
+    resultText.innerText = shiftPattern[calculatedIndex];
+    resultBox.classList.remove('hidden');
 }
