@@ -22,4 +22,4 @@ To view or modify this project locally, follow these steps:
 
 1. Clone the repository:
 ```bash
-git clone [https://github.com/YOUR_USERNAME/YOUR_REPOSITORY_NAME.git](https://github.com/YOUR_USERNAME/YOUR_REPOSITORY_NAME.git)
+git clone https://github.com/calginyagiz-web/WorkingShifts.git
