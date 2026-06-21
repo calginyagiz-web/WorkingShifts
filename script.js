@@ -1,4 +1,3 @@
-// 15 günlük vardiya örüntüsünü tanımlıyoruz
 const shiftPattern = [
     "1. Gündüz", "2. Gündüz", "3. Gündüz", "4. Gündüz", "5. Gündüz",
     "1. Gece", "1. Dinlenme",
@@ -8,7 +7,6 @@ const shiftPattern = [
     "5. Gece", "5. Dinlenme"
 ];
 
-// Not: JavaScript'te aylar 0'dan başlar (0 = Ocak, 11 = Aralık)
 const referenceDate = new Date(2026, 2, 26);
 
 const references = {
@@ -23,27 +21,21 @@ function hesapla() {
     const groupSelectInput = document.getElementById('groupSelect').value;
     const resultText = document.getElementById('resultText');
 
-    // Tarih seçilmemişse uyarı ver
     if (!targetDateInput) {
         alert("Lütfen sorgulanacak tarihi seçin.");
         return;
     }
 
-    // Hedef tarihi oluşturuyoruz
     const targetDate = new Date(targetDateInput);
 
-    // Saat farklılıklarından doğacak hataları önlemek için saatleri sıfırlıyoruz
     referenceDate.setHours(0, 0, 0, 0);
     targetDate.setHours(0, 0, 0, 0);
 
-    // İki tarih arasındaki milisaniye farkını gün sayısına çeviriyoruz
     const diffTime = targetDate - referenceDate;
     const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
 
-    // Yeni indeksi buluyoruz
     const calculatedIndex = (((references[groupSelectInput] + diffDays) % 15) + 15) % 15;
 
-    // Sonucu ekrana yazdırıyoruz
     resultText.innerText = shiftPattern[calculatedIndex];
     resultBox.classList.remove('hidden');
 }
