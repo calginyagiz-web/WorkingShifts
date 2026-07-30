@@ -1,6 +1,6 @@
-# Ankara Sincan Police Station - Info Portal 
+# Ankara Plevne Police Station - Info Portal 
 
-This is an informational web application designed to provide citizens with quick, accurate, and accessible information regarding the working hours within the Ankara Sincan Police Station.
+This is an informational web application designed to provide citizens with quick, accurate, and accessible information regarding the working hours within the Ankara Plevne Police Station.
 
 ## Project Overview
 
