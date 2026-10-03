@@ -3,39 +3,64 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vardiya Durumu Hesaplayıcı</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="color-scheme" content="dark">
+    <title>Vardiya Portalı / 12-36 Sistemi</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
+    <div class="wrap">
+        <header>
+            <div class="brand">
+                <div class="logo" aria-hidden="true">🛡️</div>
+                <div>
+                    <h1>Vardiya Portalı / 12-36 Sistemi</h1>
+                    <div class="sub">Karakol nöbet çizelgesi · 20 günlük döngü</div>
+                </div>
+            </div>
+            <div class="clock">
+                <div id="clock" aria-live="off">--:--:--</div>
+                <div id="clockDate"></div>
+            </div>
+        </header>
 
-    <div class="card">
-        <div class="card-header">
-            <h2>Vardiya Hesaplayıcı</h2>
-        </div>
+        <main class="grid">
+            <section class="panel" aria-labelledby="qh">
+                <h2 id="qh">Grup Sorgulama</h2>
+                <div class="seg" role="group" aria-label="Grup seçimi" id="seg"></div>
+                <div class="dates">
+                    <input type="date" id="datePick" aria-label="Tarih seç">
+                    <button class="chip" data-offset="0">Bugün</button>
+                    <button class="chip" data-offset="1">Yarın</button>
+                    <button class="chip" data-offset="7">+7 Gün</button>
+                </div>
+                <div class="result" id="result" aria-live="polite">
+                    <span class="badge" id="badge"></span>
+                    <div class="rdate" id="rdate"></div>
+                    <div class="rtitle" id="rtitle"></div>
+                    <div class="rgroup" id="rgroup"></div>
+                    <div class="meter">
+                        <div class="meter-head"><span id="mlabel"></span><b id="mcount"></b></div>
+                        <div class="steps" id="steps"></div>
+                    </div>
+                    <div class="note" id="note"></div>
+                </div>
+            </section>
 
-        <div class="input-group">
-            <label for="groupSelect">Grup Seçiniz</label>
-            <select id="groupSelect">
-                <option value="1">1. Grup</option>
-                <option value="2">2. Grup</option>
-                <option value="3">3. Grup</option>
-            </select>
-        </div>
+            <section class="panel" aria-labelledby="rh">
+                <h2 id="rh">Karakol Genel Durumu</h2>
+                <div class="rosterdate" id="rosterDate"></div>
+                <div id="roster"></div>
+            </section>
+        </main>
 
-        <div class="input-group">
-            <label for="targetDate">Sorgulanacak Tarih</label>
-            <input type="date" id="targetDate" required>
-        </div>
-
-        <button onclick="hesapla()">Vardiyayı Bul</button>
-
-        <div id="resultBox" class="result-box hidden">
-            <span class="result-label">O günkü durumunuz:</span>
-            <div id="resultText" class="result-text"></div>
-        </div>
+        <footer>Referans: 21 Eylül 2026 · 1. Grup = 1. Gündüz</footer>
     </div>
 
     <script src="script.js"></script>
