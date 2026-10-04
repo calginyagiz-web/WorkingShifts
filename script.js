@@ -129,8 +129,8 @@ function renderRoster(daysDiff) {
     const all = [1, 2, 3, 4].map(g => ({ g, s: getGroupStatus(g, daysDiff) }));
 
     const sections = [
-        { type: 'day', label: 'Gündüz Ekibi (07:00 - 19:00)' },
-        { type: 'night', label: 'Gece Ekibi (19:00 - 07:00)' },
+        { type: 'day', label: 'Gündüz Ekibi (08:00 - 20:00)' },
+        { type: 'night', label: 'Gece Ekibi (20:00 - 08:00)' },
         { type: 'rest', label: 'İstirahatteki Ekipler' }
     ];
 
